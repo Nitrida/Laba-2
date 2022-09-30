@@ -1,7 +1,12 @@
 import datetime as dt
+from decimal import Decimal
+
+
 date_format ='%d/%m/%Y'
+
+
 class Calculator:
-    def __init__(self,limit: float):
+    def __init__(self, limit: Decimal):
         self.limit = limit
         self.records = []
 
@@ -63,20 +68,27 @@ class CashCalculator(Calculator):
                     f'{today_spent_currency} {currency_name}')
 
 
-
-
-
 class Record:
-    def __init__(self, amount: float, comment: str, date: str = None):
+    def __init__(self, amount: Decimal, comment: str, date: str = None):
         self.amount =float(amount)
         self.comment=comment
         if date is not None:
             self.date = dt.datetime.strptime(date, date_format).date()
         else:
             self.date = dt.date.today()
+
+class CaloriesCalculator(Calculator):
+    def get_calories_remained(self) -> str:
+        # Сколько можно еще съесть
+        spent_today = round(self.get_today_remained())
+        if spent_today > 0:
+            return (f'Сегодня можно съесть что-нибудь ещё, '
+                    f'но с общей калорийностью не более {spent_today} кКал')
+        else:
+            return 'Хватит есть!'
 #проверка результатов
 cal = input('Введите сумму: ')
-cal = float(cal)
+cal= float = float(cal)
 am=input('Введите денежную сумму/количество калорий')
 am=float(am)
 com=input('Введите коментарий к записи: ')
