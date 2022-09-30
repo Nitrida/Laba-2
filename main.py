@@ -21,7 +21,7 @@ class Calculator:
                           for record in self.records
                           if date_week_ago <record.date <= d_today]))
 
-    def get_today_remained(self) -> float:
+    def get_today_remained(self):
         spent_today = self.get_today_stats()
         return self.limit - spent_today
 
