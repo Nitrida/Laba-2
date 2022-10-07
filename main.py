@@ -86,9 +86,9 @@ class CaloriesCalculator(Calculator):
                     f'но с общей калорийностью не более {spent_today} кКал')
         else:
             return 'Хватит есть!'
-#проверка результатов 1_2
+#проверка результатов
 cal = input('Введите сумму: ')
-cal= float = float(cal)
+cal= float(cal)
 am=input('Введите денежную сумму/количество калорий')
 am=float(am)
 com=input('Введите коментарий к записи: ')
